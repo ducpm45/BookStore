@@ -25,19 +25,17 @@ public class BookServiceImpl implements IBookService {
     private int genresPageSize;
     @Value("${new.book.page.size}")
     private int newBookPageSize;
-    @Value("${page.number}")
-    private int pageNumber;
 
     @Override
-    public Page<Book> getAllNewBooks() {
+    public Page<Book> getAllNewBooks(int pageNum) {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime oneYearBefore = now.minusYears(1);
         Page<Book> pageNewBook = bookRepository.getBooksByPublishDateBetween(oneYearBefore, now,
-                PageRequest.of(pageNumber, newBookPageSize));
+                PageRequest.of(pageNum, newBookPageSize));
         if(!pageNewBook.hasContent()) {
             throw new ResourceNotFoundException("Does not exist any book in resource!");
         }
-        log.info("Load new book: {} with pageNumber {}, pageSize {}", pageNewBook, pageNumber, newBookPageSize);
+        log.info("Load new book: {} with pageNumber {}, pageSize {}", pageNewBook, pageNum, newBookPageSize);
         return pageNewBook;
     }
 
