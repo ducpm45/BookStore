@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--  Bootstrap  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <!--  Font awesome  -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <!--  Style  -->
+  <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" />
+  <title th:text="${bookDTO.name}"></title>
+</head>
+<body>
+<!--  Topbar start  -->
+<div th:replace="layout::topbar"></div>
+<!--  Topbar end -->
+
+<!--  Navbar start  -->
+<div th:replace="layout :: navbar"></div>
+<!--  Navbar end  -->
+
+<!--  Featured Start -->
+<div th:replace="layout :: featured"></div>
+<!--  Featured End -->
+
+<!--  Book detail start -->
+<div class="container-fluid pt-2">
+  <div class="row pt-5 pb-3 justify-content-center">
+    <div class="col-lg-8 col-md-8 col-sm-12 pb-1">
+      <div class="row mr-0 ml-0 pb-2 justify-content-start">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <img th:src="${bookDTO.image}" alt="" style="height: 400px" src="">
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="pb-1 mb-0">
+            <h3 th:text="${bookDTO.name}"></h3>
+          </div>
+          <div class="pb-1 mb-0">
+            <h5>Thể loại: <a th:href="@{'/bookstore/category/' + ${bookDTO.category.id}}"><span th:text="${bookDTO.category.categoryName}"></span></a></h5>
+          </div>
+          <div class="pb-1 mb-0">
+            <h5>Tác giả: <span th:text="${bookDTO.author}"></span></h5>
+          </div>
+          <div class="pb-1 mb-0">
+            <h5>Ngôn ngữ: <span th:text="${bookDTO.language}"></span></h5>
+          </div>
+          <div class="pb-1 mb-0">
+            <h5>Ngày xuất bản: <span th:text="${bookDTO.publishDate}"></span></h5>
+          </div>
+          <div class="pb-1 mb-0">
+            <h5>Nhà xuất bản: <span th:text="${bookDTO.publisher}"></span></h5>
+          </div>
+          <div class="pb-1 pt-1 mb-0">
+            <del th:if="${bookDTO.discount} > 0"><h5 th:text="${bookDTO.price} + ' đ'"></h5></del>
+            <h2 style="color: red" th:text="${bookDTO.newPrice} + ' đ'"></h2>
+          </div>
+          <div class="d-flex align-items-center mb-4 pt-2">
+            <div class="input-group quantity mr-3" style="width: 130px;">
+              <div class="input-group-btn">
+                <button class="btn btn-primary btn-minus" >
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control bg-secondary text-center" value="1">
+              <div class="input-group-btn">
+                <button class="btn btn-primary btn-plus">
+                  <i class="fa fa-plus"></i>
+                </button>
+              </div>
+            </div>
+            <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Thêm vào giỏ hàng</button>
+          </div>
+        </div>
+      </div>
+      <div class="row mr-0 ml-0 pb-2">
+        <div class="text-center pt-3 mb-4">
+          <h3 class="section-title px-5"><span class="px-2">Mô tả sản phẩm</span></h3>
+        </div>
+        <div class="text-left pt-3 mb-4">
+          <p th:text="${bookDTO.about}"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  Book detail end -->
+
+<!--  Footer start  -->
+<div th:replace="layout :: footer"></div>
+<!--  Footer end-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>

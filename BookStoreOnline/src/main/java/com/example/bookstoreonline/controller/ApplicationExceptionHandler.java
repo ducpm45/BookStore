@@ -23,5 +23,4 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
                         .message(e.getMessage())
                         .build());
     }
-
 }
