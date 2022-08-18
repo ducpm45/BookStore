@@ -11,7 +11,4 @@ import java.util.List;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-    Page<Book> getBooksByPublishDateBetween(LocalDateTime fromPublishDate, LocalDateTime toPublishDate, Pageable pageable);
-    Page<Book> getBooksByGenres(List<String> genres, Pageable pageable);
-
 }

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "tbl_orders")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -21,18 +21,19 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_cust_id")
-    @ToString.Exclude
-    private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
     @Column(name = "order_date")
     private LocalDateTime orderDate;
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    @ToString.Exclude
-    private List<OrderItem> orderItems;
-    @Column(name = "total_amount")
+    @Column(name = "order_total_amount")
     private Double totalAmount;
+    @Column(name = "order_receiver_name")
+    private String receiverName;
+    @Column(name = "order_receiver_address")
+    private String receiverAddress;
+    @Column(name = "order_receiver_phone")
+    private String receiverPhone;
 
     @Override
     public boolean equals(Object o) {

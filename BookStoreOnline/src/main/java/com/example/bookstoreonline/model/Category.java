@@ -7,26 +7,26 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "tbl_categories")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
 @Builder
-public class Role {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id")
+    @Column(name = "category_id")
     private Long id;
-    private String name;
-
+    @Column(name = "category_name")
+    private String categoryName;
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Role role = (Role) o;
-        return id != null && Objects.equals(id, role.id);
+        Category category = (Category) o;
+        return id != null && Objects.equals(id, category.id);
     }
 
     @Override

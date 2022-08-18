@@ -4,12 +4,11 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.List;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "books")
+@Table(name = "tbl_books")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -27,20 +26,23 @@ public class Book {
     private String about;
     @Column(name = "book_language")
     private String language;
-    @ElementCollection
-    private List<String> genres;
+    @ManyToOne
+    @JoinColumn(name = "book_category_id")
+    private Category category;
     @Column(name = "book_author")
     private String author;
     @Column(name = "book_publisher")
     private String publisher;
     @Column(name = "book_publish_date")
-    private LocalDateTime publishDate;
+    private LocalDate publishDate;
     @Column(name = "book_quantity")
     private Integer quantity;
     @Column(name = "book_price")
     private Double price;
     @Column(name = "book_image")
     private String image;
+    @Column(name = "book_discount")
+    private Double discount;
 
     @Override
     public boolean equals(Object o) {

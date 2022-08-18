@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "order_items")
+@Table(name = "tbl_order_items")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -17,20 +17,20 @@ import java.util.Objects;
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_item_id")
+    @Column(name = "item_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "order_id")
-    @ToString.Exclude
     private Order order;
-    @OneToOne
+
+    @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
-    @Column(name = "order_item_quantity")
+    @Column(name = "item_quantity")
     private Integer quantity;
-    @Column(name = "order_item_amount")
-    private Double amount;
+    @Column(name = "item_price")
+    private Double price;
 
     @Override
     public boolean equals(Object o) {

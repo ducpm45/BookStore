@@ -4,12 +4,10 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "tbl_users")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -21,18 +19,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id;
+    @Column(name = "user_email")
     private String email;
+    @Column(name = "user_password")
     private String password;
+    @Column(name = "user_verification_code")
     private String verificationCode;
+    @Column(name = "user_enable")
     private Boolean enable;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    @ToString.Exclude
-    private Set<Role> roles = new HashSet<>();
+    @Column(name = "user_role")
+    private String role;
+    @Column(name = "user_full_name")
+    private String fullName;
+    @Column(name = "user_address")
+    private String address;
+    @Column(name = "user_phone")
+    private String phone;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

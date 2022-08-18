@@ -6,5 +6,4 @@ import java.util.List;
 public interface IBookService {
     Page<Book> getAllNewBooks(int pageNum);
     Book addBook(Book books);
-
 }
