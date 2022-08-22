@@ -19,7 +19,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
     private Long id;
-    @Column(name = "category_name")
+    @Column(name = "category_name", unique = true)
     private String categoryName;
     @Override
     public boolean equals(Object o) {

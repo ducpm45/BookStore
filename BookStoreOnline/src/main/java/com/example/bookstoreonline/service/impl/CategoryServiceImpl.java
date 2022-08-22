@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -23,5 +24,14 @@ public class CategoryServiceImpl implements ICategoryService {
             throw new ResourceNotFoundException("Could not found category!");
         }
         return categories;
+    }
+
+    @Override
+    public Category getCategoryById(Long categoryId) {
+        Optional<Category> categoryOpt = categoryRepository.findById(categoryId);
+        if(!categoryOpt.isPresent()) {
+            throw new ResourceNotFoundException(String.format("Could not found category with id %s", categoryId));
+        }
+        return categoryOpt.get();
     }
 }

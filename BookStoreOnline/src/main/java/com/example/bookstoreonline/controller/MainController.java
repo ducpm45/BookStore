@@ -51,12 +51,38 @@ public class MainController {
         return "/user/book-detail";
     }
 
+    @GetMapping("/category-book/{categoryId}")
+    public String viewCategoryBookpage(Model model, @PathVariable(name = "categoryId") Long categoryId) {
+        return showCategoryBookPage(model, categoryId, 1);
+    }
+
+    @GetMapping("/category-book/{categoryId}/{pageNum}")
+    public String showCategoryBookPage(Model model, @PathVariable(name = "categoryId") Long categoryId,
+                                       @PathVariable(name = "pageNum") int pageNum) {
+        Category category = categoryService.getCategoryById(categoryId);
+        Page<Book> categoryBookPage = bookService.getBooksByCategoryId(categoryId, pageNum);
+        List<Book> categoryBookList = categoryBookPage.getContent();
+        List<Category> categoryList = categoryService.getAllCategories();
+
+        model.addAttribute("categoryName", category.getCategoryName());
+        model.addAttribute("currentPage", pageNum);
+        model.addAttribute("totalPages", categoryBookPage.getTotalPages());
+        model.addAttribute("categoryBookList", categoryBookList);
+        model.addAttribute("categoryList", categoryList);
+        return "/user/category-book";
+    }
+    
+    @GetMapping("/cart")
+    public String showCartPage(Model model) {
+        List<Category> categoryList = categoryService.getAllCategories();
+        model.addAttribute("categoryList", categoryList);
+
+        return "/user/cart";
+    }
+
     @GetMapping("/test")
     public String test(Model model) {
         return "test";
     }
-    @GetMapping("/admin")
-    public String admin() {
-        return "/admin/admin";
-    }
+
 }

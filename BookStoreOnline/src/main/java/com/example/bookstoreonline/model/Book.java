@@ -26,7 +26,7 @@ public class Book {
     private String about;
     @Column(name = "book_language")
     private String language;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_category_id")
     private Category category;
     @Column(name = "book_author")

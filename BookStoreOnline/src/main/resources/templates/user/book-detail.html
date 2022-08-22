@@ -37,7 +37,7 @@
             <h3 th:text="${bookDTO.name}"></h3>
           </div>
           <div class="pb-1 mb-0">
-            <h5>Thể loại: <a th:href="@{'/bookstore/category/' + ${bookDTO.category.id}}"><span th:text="${bookDTO.category.categoryName}"></span></a></h5>
+            <h5>Thể loại: <a th:href="@{'/bookstore/category-book/' + ${bookDTO.category.id}}"><span th:text="${bookDTO.category.categoryName}"></span></a></h5>
           </div>
           <div class="pb-1 mb-0">
             <h5>Tác giả: <span th:text="${bookDTO.author}"></span></h5>
@@ -78,7 +78,7 @@
           <h3 class="section-title px-5"><span class="px-2">Mô tả sản phẩm</span></h3>
         </div>
         <div class="text-left pt-3 mb-4">
-          <p th:text="${bookDTO.about}"></p>
+          <div th:utext="${bookDTO.about}"></div>
         </div>
       </div>
     </div>

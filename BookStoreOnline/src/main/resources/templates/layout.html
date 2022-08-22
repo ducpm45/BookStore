@@ -88,7 +88,7 @@
                  id="navbar-vertical">
                 <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                     <div th:each="category : ${categoryList}">
-                        <a th:href="@{'/bookstore/category/' + ${category.id}}" class="nav-item nav-link" th:text="${category.categoryName}"></a>
+                        <a th:href="@{'/bookstore/category-book/' + ${category.id}}" class="nav-item nav-link" th:text="${category.categoryName}"></a>
                     </div>
                 </div>
             </nav>
