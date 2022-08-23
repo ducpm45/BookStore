@@ -88,7 +88,8 @@
                  id="navbar-vertical">
                 <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
                     <div th:each="category : ${categoryList}">
-                        <a th:href="@{'/bookstore/category-book/' + ${category.id}}" class="nav-item nav-link" th:text="${category.categoryName}"></a>
+                        <a th:href="@{'/bookstore/category-book/' + ${category.id}}" class="nav-item nav-link"
+                           th:text="${category.categoryName}"></a>
                     </div>
                 </div>
             </nav>
@@ -100,8 +101,11 @@
                         <a th:href="@{/bookstore}" class="nav-item nav-link active">Trang chủ</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
-                        <a th:href="@{/bookstore/login}" class="nav-item nav-link">Đăng nhập</a>
-                        <a th:href="@{/bookstore/register}" class="nav-item nav-link">Đăng ký</a>
+                        <!--/*@thymesVar id="getUser" type=""*/-->
+                        <a th:href="@{/bookstore/login}" th:unless="${#authentication.isAuthenticated()}" class="nav-item nav-link">Đăng nhập</a>
+                        <a href="#" th:if="${#authentication.isAuthenticated()}">Xin chào <span></span></a>
+                        <a th:href="@{/bookstore/register}" th:unless="${#authentication.isAuthenticated()}" class="nav-item nav-link">Đăng ký</a>
+                        <a href="#" th:if="${#authentication.isAuthenticated()}">Đăng xuất</a>
                     </div>
                 </div>
             </nav>

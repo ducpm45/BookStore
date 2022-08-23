@@ -1,18 +1,27 @@
 package com.example.bookstoreonline.controller;
 
 import com.example.bookstoreonline.dto.BookDTO;
+import com.example.bookstoreonline.dto.NewUserDTO;
 import com.example.bookstoreonline.model.Book;
 import com.example.bookstoreonline.model.Category;
+import com.example.bookstoreonline.model.User;
 import com.example.bookstoreonline.service.IBookService;
 import com.example.bookstoreonline.service.ICategoryService;
+import com.example.bookstoreonline.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 @Controller
 @RequestMapping("/bookstore")
@@ -22,6 +31,8 @@ public class MainController {
     private IBookService bookService;
     @Autowired
     private ICategoryService categoryService;
+    @Autowired
+    private IUserService userService;
 
     @GetMapping("")
     public String showHomePage(Model model) {
@@ -71,7 +82,7 @@ public class MainController {
         model.addAttribute("categoryList", categoryList);
         return "/user/category-book";
     }
-    
+
     @GetMapping("/cart")
     public String showCartPage(Model model) {
         List<Category> categoryList = categoryService.getAllCategories();
@@ -80,6 +91,42 @@ public class MainController {
         return "/user/cart";
     }
 
+    @GetMapping("/login")
+    public String showLoginPage(Model model) {
+        List<Category> categoryList = categoryService.getAllCategories();
+        model.addAttribute("categoryList", categoryList);
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String showRegisterPage(Model model) {
+        List<Category> categoryList = categoryService.getAllCategories();
+        model.addAttribute("categoryList", categoryList);
+        model.addAttribute("newUserDTO", new NewUserDTO());
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String registerNewUser(NewUserDTO newUserDTO, HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
+        userService.registerNewUser(newUserDTO, getSiteURL(request));
+        return "email-verification";
+    }
+
+    @GetMapping("/verify")
+    public String verifyUser(Model model, @Param("code") String code) {
+        List<Category> categoryList = categoryService.getAllCategories();
+        model.addAttribute("categoryList", categoryList);
+        if(userService.verified(code)) {
+            return "verify-success";
+        } else {
+            return "verify-failed";
+        }
+    }
+
+    private String getSiteURL(HttpServletRequest request) {
+        String siteURL = request.getRequestURL().toString();
+        return siteURL.replace(request.getServletPath(), "");
+    }
     @GetMapping("/test")
     public String test(Model model) {
         return "test";

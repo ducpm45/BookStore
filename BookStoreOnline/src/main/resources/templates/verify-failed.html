@@ -10,7 +10,7 @@
   <!--  Style  -->
   <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}" />
 
-  <title>Xác minh</title>
+  <title>Xác minh thất bại</title>
 </head>
 <body>
 <div class="container-fluid mb-5">
@@ -21,18 +21,15 @@
       </div>
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Xác minh email</h4>
-          <div class="alert alert-success" role="alert">
-            Một liên kết xác minh đã được gửi tới địa chỉ email của bạn
-          </div>
-          Vui lòng kiểm tra email và click vào liên kết xác minh để hoàn thành đăng ký !
+          <h3 class="card-title">Xác minh thất bại</h3>
+          <h4 class="alert alert-danger" role="alert">
+            Xin lỗi, tài khoản của bạn chưa được thực hiện xác minh,
+            vui lòng kiểm tra email để hoàn tất việc xác minh tài khoản !
+          </h4>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

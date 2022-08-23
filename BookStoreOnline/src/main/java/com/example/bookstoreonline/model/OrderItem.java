@@ -21,10 +21,6 @@ public class OrderItem {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
-
-    @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
     @Column(name = "item_quantity")

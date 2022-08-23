@@ -22,7 +22,7 @@ public class Book {
     private Long id;
     @Column(name = "book_name")
     private String name;
-    @Column(name = "book_about")
+    @Column(name = "book_about", columnDefinition = "LONGTEXT")
     private String about;
     @Column(name = "book_language")
     private String language;

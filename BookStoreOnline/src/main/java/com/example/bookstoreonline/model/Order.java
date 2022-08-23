@@ -5,8 +5,10 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tbl_orders")
@@ -28,6 +30,8 @@ public class Order {
     private LocalDateTime orderDate;
     @Column(name = "order_total_amount")
     private Double totalAmount;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<OrderItem> items = new HashSet<>();
     @Column(name = "order_receiver_name")
     private String receiverName;
     @Column(name = "order_receiver_address")
