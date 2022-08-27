@@ -2,7 +2,6 @@ package com.example.bookstoreonline.service.impl;
 
 import com.example.bookstoreonline.config.FileStorageProperties;
 import com.example.bookstoreonline.dto.UploadBookDTO;
-import com.example.bookstoreonline.exception.ResourceNotFoundException;
 import com.example.bookstoreonline.model.Book;
 import com.example.bookstoreonline.model.Category;
 import com.example.bookstoreonline.repository.BookRepository;
@@ -48,18 +47,14 @@ public class BookServiceImpl implements IBookService {
     @Override
     public Page<Book> getAllBooks(int pageNum) {
         Pageable pageable = PageRequest.of(pageNum - 1, pageSize);
-        Page<Book> page = bookRepository.findAll(pageable);
-        if (!page.hasContent()) {
-            throw new ResourceNotFoundException("Could not found book!");
-        }
-        return page;
+        return bookRepository.findAll(pageable);
     }
 
     @Override
     public Book getBookById(Long bookId) {
         Optional<Book> bookOpt = bookRepository.findById(bookId);
-        if (!bookOpt.isPresent()) {
-            throw new ResourceNotFoundException(String.format("Could not found book with id %s", bookId));
+        if(bookOpt.isEmpty()) {
+            return null;
         }
         log.info("Book with id {}: {}", bookId, bookOpt.get());
         return bookOpt.get();
@@ -69,15 +64,12 @@ public class BookServiceImpl implements IBookService {
     public Page<Book> getBooksByCategoryId(Long categoryId, int pageNum) {
         Pageable pageable = PageRequest.of(pageNum - 1, pageCategoryBookSize);
         Page<Book> page = bookRepository.findByCategory_Id(categoryId, pageable);
-        if (!page.hasContent()) {
-            throw new ResourceNotFoundException(String.format("Could not found book with category id %s!", categoryId));
-        }
         log.info("Book with category id {}: {}", categoryId, page.getContent());
         return page;
     }
 
     @Override
-    public Book addNewBook(UploadBookDTO uploadBookDTO, MultipartFile file) {
+    public void addNewBook(UploadBookDTO uploadBookDTO, MultipartFile file) {
         Category category = categoryRepository.getCategoryByCategoryName(uploadBookDTO.getCategory());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
@@ -100,7 +92,17 @@ public class BookServiceImpl implements IBookService {
                 .image("/img/" + fileName)
                 .discount(uploadBookDTO.getDiscount())
                 .build();
-        return bookRepository.save(book);
+        bookRepository.save(book);
+    }
+
+    @Override
+    public Page<Book> searchAllBooksByName(int pageNum, String name) {
+        Pageable pageable = PageRequest.of(pageNum - 1, pageSize);
+        Page<Book> page = bookRepository.findByNameContaining(name, pageable);
+        if(!page.hasContent()) {
+            return null;
+        }
+        return page;
     }
 
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="index::header">
+</head>
+<body>
+<!--  Topbar start  -->
+<div th:replace="index :: topbar"></div>
+<!--  Topbar end  -->
+
+<!--  Navbar start  -->
+<div th:replace="index :: navbar"></div>
+<!--  Navbar end  -->
+
+<!--  Login form start-->
+<div class="container-fluid mb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <form th:action="@{/process-login}" method="post">
+        <div class="form-group">
+          <label for="email">Địa chỉ email:</label>
+          <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+          <label for="password">Mật khẩu:</label>
+          <input type="password" name="password" class="form-control" id="password">
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Ghi nhớ tài khoản</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+      </form>
+    </div>
+  </div>
+</div>
+<!--  Login form end  -->
+
+<!--  Footer start  -->
+<div th:replace="index :: footer"></div>
+<!--  Footer end-->
+<a th:replace="index::back-to-top"></a>
+<th:block th:replace="index::script"></th:block>
+</body>
+</html>

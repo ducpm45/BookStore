@@ -8,7 +8,7 @@ import java.io.UnsupportedEncodingException;
 
 public interface IUserService {
     void registerNewUser(NewUserDTO newUserDTO, String siteURL) throws MessagingException, UnsupportedEncodingException;
-    boolean emailIsExisted(String email);
+    User getUserByEmail(String email);
     void sendVerificationCodeToEmail(User user, String siteURL) throws MessagingException, UnsupportedEncodingException;
     boolean verified(String verifyCode);
 }

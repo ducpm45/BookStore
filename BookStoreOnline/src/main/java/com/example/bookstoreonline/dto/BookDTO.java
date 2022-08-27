@@ -42,7 +42,7 @@ public class BookDTO {
                     .price(book.getPrice())
                     .image(book.getImage())
                     .discount(book.getDiscount())
-                    .newPrice(Math.floor(book.getPrice()) - (book.getPrice() * book.getDiscount()))
+                    .newPrice(Math.floor(book.getPrice() - (book.getPrice() * book.getDiscount())))
                     .build();
         }
     }

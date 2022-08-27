@@ -1,135 +1,94 @@
 package com.example.bookstoreonline.controller;
 
 import com.example.bookstoreonline.dto.BookDTO;
-import com.example.bookstoreonline.dto.NewUserDTO;
 import com.example.bookstoreonline.model.Book;
 import com.example.bookstoreonline.model.Category;
-import com.example.bookstoreonline.model.User;
 import com.example.bookstoreonline.service.IBookService;
 import com.example.bookstoreonline.service.ICategoryService;
-import com.example.bookstoreonline.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 @Controller
-@RequestMapping("/bookstore")
 @Slf4j
 public class MainController {
     @Autowired
     private IBookService bookService;
     @Autowired
     private ICategoryService categoryService;
-    @Autowired
-    private IUserService userService;
+//    @Autowired
+//    private IUserService userService;
 
-    @GetMapping("")
-    public String showHomePage(Model model) {
-        return showPage(model, 1);
+    @GetMapping("/")
+    public String showHomePage(Model model, @RequestParam(value = "userInput", required = false) String userInput, Principal principal) {
+        model.addAttribute("title", "Trang chủ");
+        if(null == userInput || userInput.trim().equals("")) {
+            return showPage(model, 1, null);
+        }
+        if(null != principal) {
+            model.addAttribute("username", principal.getName());
+        }
+        return showPage(model, 1, userInput);
     }
     @GetMapping("/page/{pageNum}")
     public String showPage(Model model,
-                           @PathVariable(name = "pageNum") int pageNum) {
-        Page<Book> page = bookService.getAllBooks(pageNum);
-        List<Book> bookList = page.getContent();
-        List<Category> categoryList = categoryService.getAllCategories();
-
-        model.addAttribute("currentPage", pageNum);
-        model.addAttribute("totalPages", page.getTotalPages());
-        model.addAttribute("categoryList", categoryList);
-        model.addAttribute("bookList", bookList);
+                                   @PathVariable(name = "pageNum") int pageNum,
+                           String userInput) {
+        log.info("userInput: {}", userInput);
+        model.addAttribute("title", "Trang chủ");
+        if(null == userInput) {
+            Page<Book> page = bookService.getAllBooks(pageNum);
+            List<BookDTO> bookDTOList = new ArrayList<>();
+            page.getContent().forEach(book -> bookDTOList.add(BookDTO.Mapper.mapFromBookEntity(book)));
+            model.addAttribute("currentPage", pageNum);
+            model.addAttribute("totalPages", page.getTotalPages());
+            model.addAttribute("bookDTOList", bookDTOList);
+        } else {
+            if(null == bookService.searchAllBooksByName(pageNum, userInput.trim())) {
+                model.addAttribute("searchByUserInputNoResult", "Không tìm thấy kết quả phù hợp");
+            } else {
+                Page<Book> pageSearchResult = bookService.searchAllBooksByName(pageNum, userInput.trim());
+                List<BookDTO> bookDTOListSearchResult = new ArrayList<>();
+                pageSearchResult.getContent().forEach(book -> bookDTOListSearchResult.add(BookDTO.Mapper.mapFromBookEntity(book)));
+                model.addAttribute("currentPage", pageNum);
+                model.addAttribute("totalPages", pageSearchResult.getTotalPages());
+                model.addAttribute("bookDTOListSearchResult", bookDTOListSearchResult);
+            }
+        }
         return "index";
     }
     @GetMapping("/book-detail/{bookId}")
     public String showBookDetailPage(Model model, @PathVariable(name = "bookId") Long bookId) {
         Book book = bookService.getBookById(bookId);
         BookDTO bookDTO = BookDTO.Mapper.mapFromBookEntity(book);
-        log.info("BookDTO: {}", bookDTO);
-        List<Category> categoryList = categoryService.getAllCategories();
+        model.addAttribute("tittle", bookDTO.getName());
         model.addAttribute("bookDTO", bookDTO);
-        model.addAttribute("categoryList", categoryList);
-        return "/user/book-detail";
+        return "book-detail";
     }
 
-    @GetMapping("/category-book/{categoryId}")
+    @GetMapping("/category/{categoryId}")
     public String viewCategoryBookpage(Model model, @PathVariable(name = "categoryId") Long categoryId) {
         return showCategoryBookPage(model, categoryId, 1);
     }
 
-    @GetMapping("/category-book/{categoryId}/{pageNum}")
+    @GetMapping("/category/{categoryId}/{pageNum}")
     public String showCategoryBookPage(Model model, @PathVariable(name = "categoryId") Long categoryId,
                                        @PathVariable(name = "pageNum") int pageNum) {
         Category category = categoryService.getCategoryById(categoryId);
         Page<Book> categoryBookPage = bookService.getBooksByCategoryId(categoryId, pageNum);
         List<Book> categoryBookList = categoryBookPage.getContent();
-        List<Category> categoryList = categoryService.getAllCategories();
-
-        model.addAttribute("categoryName", category.getCategoryName());
+        model.addAttribute("tittle", String.format("Sách %s", category.getCategoryName()));
         model.addAttribute("currentPage", pageNum);
         model.addAttribute("totalPages", categoryBookPage.getTotalPages());
         model.addAttribute("categoryBookList", categoryBookList);
-        model.addAttribute("categoryList", categoryList);
-        return "/user/category-book";
+        return "category-book";
     }
-
-    @GetMapping("/cart")
-    public String showCartPage(Model model) {
-        List<Category> categoryList = categoryService.getAllCategories();
-        model.addAttribute("categoryList", categoryList);
-
-        return "/user/cart";
-    }
-
-    @GetMapping("/login")
-    public String showLoginPage(Model model) {
-        List<Category> categoryList = categoryService.getAllCategories();
-        model.addAttribute("categoryList", categoryList);
-        return "login";
-    }
-
-    @GetMapping("/register")
-    public String showRegisterPage(Model model) {
-        List<Category> categoryList = categoryService.getAllCategories();
-        model.addAttribute("categoryList", categoryList);
-        model.addAttribute("newUserDTO", new NewUserDTO());
-        return "register";
-    }
-
-    @PostMapping("/register")
-    public String registerNewUser(NewUserDTO newUserDTO, HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
-        userService.registerNewUser(newUserDTO, getSiteURL(request));
-        return "email-verification";
-    }
-
-    @GetMapping("/verify")
-    public String verifyUser(Model model, @Param("code") String code) {
-        List<Category> categoryList = categoryService.getAllCategories();
-        model.addAttribute("categoryList", categoryList);
-        if(userService.verified(code)) {
-            return "verify-success";
-        } else {
-            return "verify-failed";
-        }
-    }
-
-    private String getSiteURL(HttpServletRequest request) {
-        String siteURL = request.getRequestURL().toString();
-        return siteURL.replace(request.getServletPath(), "");
-    }
-    @GetMapping("/test")
-    public String test(Model model) {
-        return "test";
-    }
-
 }

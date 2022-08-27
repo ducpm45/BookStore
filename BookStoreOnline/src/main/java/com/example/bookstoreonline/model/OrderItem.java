@@ -19,14 +19,14 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_id")
     private Long id;
-
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
     @Column(name = "item_quantity")
     private Integer quantity;
-    @Column(name = "item_price")
-    private Double price;
 
     @Override
     public boolean equals(Object o) {

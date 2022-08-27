@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -39,17 +40,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("bookstore/admin/**").hasRole("ADMIN");
-        http.authorizeRequests().antMatchers("bookstore/user/**").hasAnyRole("ADMIN", "CUSTOMER");
-        http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
-        http.authorizeRequests().and().formLogin()
-                .loginProcessingUrl("/j_spring_security_login")
+        http.authorizeHttpRequests().antMatchers("/bookstore/*").permitAll()
+                .antMatchers("/bookstore/admin/*").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/bookstore/user/*").hasAnyAuthority("ROLE_ADMIN", "ROLE_CUSTOMER")
+                .antMatchers("/bookstore/cart/*").hasAnyAuthority("ROLE_ADMIN", "ROLE_CUSTOMER")
+                .and().exceptionHandling().accessDeniedPage("/403")
+                .and()
+                .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/bookstore", true)
-                .failureUrl("/login?message=error")
-                .usernameParameter("email")
+                .loginProcessingUrl("/process-login")
+                .defaultSuccessUrl("/", true)
+                .usernameParameter("username")
                 .passwordParameter("password")
-                // Cấu hình cho Logout Page.
-                .and().logout().logoutUrl("/j_spring_security_logout").logoutSuccessUrl("/login?message=logout");
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/")
+                .and()
+                .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400);
     }
 }

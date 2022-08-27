@@ -30,8 +30,6 @@ public class Order {
     private LocalDateTime orderDate;
     @Column(name = "order_total_amount")
     private Double totalAmount;
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Set<OrderItem> items = new HashSet<>();
     @Column(name = "order_receiver_name")
     private String receiverName;
     @Column(name = "order_receiver_address")

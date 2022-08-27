@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index::header">
+</head>
+<body>
+<!--  Topbar start  -->
+<div th:replace="index::topbar"></div>
+<!--  Topbar end  -->
+
+<!--  Navbar start  -->
+<div th:replace="index::navbar"></div>
+<!--  Navbar end  -->
+
+<!--  Featured Start -->
+<div th:replace="index::featured"></div>
+<!--  Featured End -->
+
+<!--  Category book start  -->
+<div class="container-fluid pt-5">
+  <div class="text-center mb-4">
+    <h2 class="section-title px-5"><span class="px-2" th:text="${tittle}"></span></h2>
+  </div>
+  <div class="row pb-3" >
+    <div class="col-lg-3 col-md-6 col-sm-12 pb-1" th:each="book : ${categoryBookList}">
+      <div class="card product-item border-0 mb-4">
+        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+          <img class="img-fluid w-100" th:src="${book.image}" alt="" src="">
+        </div>
+        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+          <h6 class="text-truncate mb-3" th:text="${book.name}"></h6>
+          <div class="d-flex justify-content-center">
+            <h6 th:text="${book.price} + ' VND'"></h6>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between bg-light border">
+          <a th:href="@{'/book-detail/' + ${book.id}}" class="btn btn-sm text-dark p-0">
+            <i class="fas fa-eye text-primary mr-1"></i>Chi tiết</a>
+          <a th:href="@{'/add-to-cart/' + ${book.id}}" class="btn btn-sm text-dark p-0">
+            <i class="fas fa-shopping-cart text-primary mr-1"></i>Chọn mua</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-5">
+    <div th:if="${totalPages > 1}">
+      <a class="btn btn-sm text-dark p-0" th:if="${currentPage > 1}"
+         th:href="@{/category-book/{categoryId}/1}">First</a>
+      <span th:unless="${currentPage > 1}">First</span>
+      &nbsp;&nbsp;
+
+      <a class="btn btn-sm text-dark p-0" th:if="${currentPage > 1}"
+         th:href="@{'/category-book/'+ ${categoryId} + '/' + ${currentPage - 1}}">Previous</a>
+      <span th:unless="${currentPage > 1}">Previous</span>
+
+      &nbsp;&nbsp;
+
+      <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+			<a class="btn btn-sm text-dark p-0" th:if="${currentPage != i}"
+               th:href="@{'/category-book/' + ${categoryId} + '/' + ${i}}">[[${i}]]</a>
+			<span th:unless="${currentPage != i}">[[${i}]]</span>
+			&nbsp;
+		</span>
+
+      <a class="btn btn-sm text-dark p-0" th:if="${currentPage < totalPages}"
+         th:href="@{'/category-book/' + ${categoryId} + '/' + ${currentPage + 1}}">Next</a>
+      <span th:unless="${currentPage < totalPages}">Next</span>
+      &nbsp;&nbsp;
+
+      <a class="btn btn-sm text-dark p-0" th:if="${currentPage < totalPages}"
+         th:href="@{'/category-book/' + ${categoryId} + '/' + ${totalPages}}">Last</a>
+      <span th:unless="${currentPage < totalPages}">Last</span>
+    </div>
+  </div>
+</div>
+<!-- Category book end  -->
+
+<!--  Footer start  -->
+<div th:replace="index::footer"></div>
+<!--  Footer end-->
+<a th:replace="index::back-to-top"></a>
+<th:block th:replace="index::script"></th:block>
+</body>
+</html>

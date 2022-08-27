@@ -1,7 +1,6 @@
 package com.example.bookstoreonline.controller;
 
 import com.example.bookstoreonline.dto.UploadBookDTO;
-import com.example.bookstoreonline.model.Category;
 import com.example.bookstoreonline.service.IBookService;
 import com.example.bookstoreonline.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,33 +10,26 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
 @Controller
-@RequestMapping("/bookstore/admin")
+@RequestMapping("/bookstore")
 public class AdminController {
     @Autowired
     private IBookService bookService;
     @Autowired
     private ICategoryService categoryService;
 
-    @GetMapping("")
+    @GetMapping("/admin")
     public String showAdminPage() {
         return "/admin/admin";
     }
 
-    @GetMapping("/add-new-book")
+    @GetMapping("/admin/add-new-book")
     public String showAddNewBookPage(Model model) {
-        List<Category> categoryList = categoryService.getAllCategories();
-        model.addAttribute("categoryList", categoryList);
+        model.addAttribute("uploadBookDTO", new UploadBookDTO());
         return "/admin/add-new-book";
     }
-    @ModelAttribute(value = "uploadBookDTO")
-    public UploadBookDTO newEntity()
-    {
-        return new UploadBookDTO();
-    }
 
-    @PostMapping("/add-new-book")
+    @PostMapping("/admin/add-new-book")
     public String showAddNewBookPage(@RequestParam("image") MultipartFile image,
                                      @ModelAttribute("uploadBookDTO") UploadBookDTO uploadBookDTO,
                                      RedirectAttributes attributes) {

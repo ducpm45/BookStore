@@ -1,7 +1,6 @@
 package com.example.bookstoreonline.service.impl;
 
 import com.example.bookstoreonline.dto.NewUserDTO;
-import com.example.bookstoreonline.exception.EmailIsExistedException;
 import com.example.bookstoreonline.model.User;
 import com.example.bookstoreonline.repository.UserRepository;
 import com.example.bookstoreonline.service.IUserService;
@@ -28,9 +27,6 @@ public class UserServiceImpl implements IUserService {
     private JavaMailSender mailSender;
     @Override
     public void registerNewUser(NewUserDTO newUserDTO, String siteURL) throws MessagingException, UnsupportedEncodingException {
-        if(emailIsExisted(newUserDTO.getEmail())) {
-            throw new EmailIsExistedException(String.format("Email %s is existed !", newUserDTO.getEmail()));
-        }
         String encodePassword =passwordEncoder.encode(newUserDTO.getPassword());
         User newUser = User.builder()
                 .email(newUserDTO.getEmail())
@@ -49,8 +45,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public boolean emailIsExisted(String email) {
-        return userRepository.getUserByEmail(email) != null;
+    public User getUserByEmail(String email) {
+        return userRepository.getUserByEmail(email);
     }
 
     @Override
@@ -85,7 +81,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public boolean verified(String verifyCode) {
         User user = userRepository.getUserByVerificationCode(verifyCode);
-        if(null == user || !user.getEnable()) {
+        if(null == user || user.getEnable()) {
             return false;
         } else {
             user.setVerificationCode(null);
