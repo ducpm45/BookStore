@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,10 +16,10 @@ public class CustomUserDetails implements UserDetails {
     private User user;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
-        authorityList.add(new SimpleGrantedAuthority(user.getRole()));
-        return authorityList;
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());
+        return Collections.singleton(authority);
     }
+
 
     @Override
     public String getPassword() {

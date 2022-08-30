@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index::header"></head>
+<body>
+<div class="container-fluid mb-5">
+  <div class="row justify-content-md-center">
+    <div class="col-12 col-md-6 mt-5">
+      <div class="text-center mb-3">
+        <h1>Book Store</h1>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Xác minh email</h4>
+          <div class="alert alert-success" role="alert">
+            Một liên kết xác minh đã được gửi tới địa chỉ email của bạn
+          </div>
+          Vui lòng kiểm tra email và click vào liên kết xác minh để hoàn thành đăng ký !
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<a th:replace="index::back-to-top"></a>
+<th:block th:replace="index::script"></th:block>
+</body>
+</html>

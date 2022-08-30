@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index::header">
+</head>
+<body>
+<!--  Topbar start  -->
+<div th:replace="index::topbar"></div>
+<!--  Topbar end  -->
+
+<!-- Book manage start -->
+<div class="container-fluid mb-5">
+  <div class="row border-top px-xl-5">
+<!--  Navbar start  -->
+    <div th:replace="admin/admin::navbar"></div>
+<!--  Navbar end  -->
+    <div class="col-lg-9 justify-content-end">
+      <div class="text-center mb-4">
+        <h2 class="section-title px-5"><span class="px-2">Quản lý sách</span></h2>
+      </div>
+      <div class="d-flex">
+        <div>
+          <h4>Thể loại</h4>
+          <form th:action="@{/admin/book-manage/filter}">
+            <select name="" id="category">
+              <option th:each="cate : ${categoryList}" th:value="${cate.categoryName}" th:text="${cate.categoryName}"></option>
+            </select>
+          </form>
+        </div>
+      </div>
+      <div class="row pt-5">
+        <table border="1" cellpadding="10">
+          <thead>
+            <tr>
+              <th>Đánh dấu</th>
+              <th>ID Sách</th>
+              <th>Tên</th>
+              <th>Tác giả</th>
+              <th>Ngày xuất bản</th>
+              <th>Nhà xuất bản</th>
+              <th>Giá</th>
+              <th>Giảm giá</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody th:each="book : ${bookDTOList}">
+            <tr>
+              <td>
+                <input type="checkbox"/>
+              </td>
+              <td th:text="${book.id}"></td>
+              <td th:text="${book.name}"></td>
+              <td th:text="${book.author}"></td>
+              <td th:text="${book.publishDate}"></td>
+              <td th:text="${book.publisher}"></td>
+              <td th:text="${book.price}"></td>
+              <td th:text="${book.discount}"></td>
+              <td>
+                <a th:href="@{'/admin/edit/' + ${book.id}}">Sửa</a>
+                <a th:href="@{'admin/delete/' + ${book.id}}">Xóa</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row justify-content-center mb-5 pt-5">
+        <div th:if="${totalPages > 1}">
+          <a class="btn btn-sm text-dark p-0" th:if="${currentPage > 1}"
+             th:href="@{/admin/all-books-manage/1}">Trang đầu</a>
+          <span th:unless="${currentPage > 1}">Trang đầu</span>
+          &nbsp;&nbsp;
+
+          <a class="btn btn-sm text-dark p-0" th:if="${currentPage > 1}"
+             th:href="@{'/admin/all-books-manage/' + ${currentPage - 1}}">Trang trước</a>
+          <span th:unless="${currentPage > 1}">Trang trước</span>
+
+          &nbsp;&nbsp;
+
+          <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+			<a class="btn btn-sm text-dark p-0" th:if="${currentPage != i}"
+               th:href="@{'/admin/all-books-manage/' + ${i}}">[[${i}]]</a>
+			<span th:unless="${currentPage != i}">[[${i}]]</span>
+			&nbsp;
+		</span>
+
+          <a class="btn btn-sm text-dark p-0" th:if="${currentPage < totalPages}"
+             th:href="@{'/admin/all-books-manage/' + ${currentPage + 1}}">Trang tiếp</a>
+          <span th:unless="${currentPage < totalPages}">Trang tiếp</span>
+          &nbsp;&nbsp;
+
+          <a class="btn btn-sm text-dark p-0" th:if="${currentPage < totalPages}"
+             th:href="@{'/admin/all-books-manage/' + ${totalPages}}">Trang cuối</a>
+          <span th:unless="${currentPage < totalPages}">Trang cuối</span>
+        </div>
+      </div>
+  </div>
+</div>
+<!-- Book manage end -->
+
+<!-- Footer start -->
+<div th:replace="index::footer"></div>
+<!-- Footer end -->
+<th:block th:replace="index::script"></th:block>
+<th:block th:replace="admin/admin::nice-edit"></th:block>
+</body>
+</html>

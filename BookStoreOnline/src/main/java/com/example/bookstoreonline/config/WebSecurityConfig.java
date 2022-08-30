@@ -40,17 +40,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests().antMatchers("/bookstore/*").permitAll()
-                .antMatchers("/bookstore/admin/*").hasAuthority("ROLE_ADMIN")
-                .antMatchers("/bookstore/user/*").hasAnyAuthority("ROLE_ADMIN", "ROLE_CUSTOMER")
-                .antMatchers("/bookstore/cart/*").hasAnyAuthority("ROLE_ADMIN", "ROLE_CUSTOMER")
+        http.csrf().disable().authorizeHttpRequests()
+                .antMatchers("/", "/book-detail*", "/category*").permitAll()
+                .antMatchers("/admin*").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/user*").hasAnyAuthority("ROLE_ADMIN", "ROLE_CUSTOMER")
                 .and().exceptionHandling().accessDeniedPage("/403")
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/process-login")
                 .defaultSuccessUrl("/", true)
-                .usernameParameter("username")
+                .failureUrl("/login?error=true")
+                .usernameParameter("email")
                 .passwordParameter("password")
                 .and()
                 .logout()

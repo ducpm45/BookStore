@@ -96,6 +96,26 @@ public class BookServiceImpl implements IBookService {
     }
 
     @Override
+    public boolean editBook(UploadBookDTO editBookDTO, Long bookId) {
+        Category category = categoryRepository.getCategoryByCategoryName(editBookDTO.getCategory());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        Book editBook = Book.builder()
+                .id(bookId)
+                .name(editBookDTO.getName())
+                .language(editBookDTO.getLanguage())
+                .category(category)
+                .author(editBookDTO.getAuthor())
+                .publisher(editBookDTO.getPublisher())
+                .publishDate(LocalDate.parse(editBookDTO.getPublishDate(), formatter))
+                .quantity(editBookDTO.getQuantity())
+                .price(editBookDTO.getPrice())
+                .discount(editBookDTO.getDiscount() / 100)
+                .build();
+        Book editedBook = bookRepository.save(editBook);
+        return editedBook.equals(editBook);
+    }
+
+    @Override
     public Page<Book> searchAllBooksByName(int pageNum, String name) {
         Pageable pageable = PageRequest.of(pageNum - 1, pageSize);
         Page<Book> page = bookRepository.findByNameContaining(name, pageable);

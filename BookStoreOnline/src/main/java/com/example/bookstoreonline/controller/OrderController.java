@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -34,13 +35,14 @@ public class OrderController {
         }
         return "/user/cart";
     }
-
-    public String addToCart(Model model, @RequestBody() Long bookId,
+    @PostMapping("/add-to-cart")
+    public String addOneToCart(Model model, @RequestBody() Long bookId,
                             @RequestBody() Long orderId,
                             Principal principal) {
+
         Book book = bookService.getBookById(bookId);
         Order order = orderService.getOrderById(orderId);
         User user = userService.getUserByEmail(principal.getName());
-        return null;
+        return "index";
     }
 }

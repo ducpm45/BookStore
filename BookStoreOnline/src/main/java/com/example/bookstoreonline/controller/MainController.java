@@ -28,13 +28,10 @@ public class MainController {
 //    private IUserService userService;
 
     @GetMapping("/")
-    public String showHomePage(Model model, @RequestParam(value = "userInput", required = false) String userInput, Principal principal) {
+    public String showHomePage(Model model, @RequestParam(value = "userInput", required = false) String userInput) {
         model.addAttribute("title", "Trang chủ");
         if(null == userInput || userInput.trim().equals("")) {
             return showPage(model, 1, null);
-        }
-        if(null != principal) {
-            model.addAttribute("username", principal.getName());
         }
         return showPage(model, 1, userInput);
     }
@@ -90,5 +87,9 @@ public class MainController {
         model.addAttribute("totalPages", categoryBookPage.getTotalPages());
         model.addAttribute("categoryBookList", categoryBookList);
         return "category-book";
+    }
+    @GetMapping("/403")
+    public String accessDenied() {
+        return "403";
     }
 }

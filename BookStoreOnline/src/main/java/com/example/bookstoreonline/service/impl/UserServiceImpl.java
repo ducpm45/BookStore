@@ -34,7 +34,7 @@ public class UserServiceImpl implements IUserService {
                 .address(newUserDTO.getAddress())
                 .fullName(newUserDTO.getFullName())
                 .phone(newUserDTO.getPhone())
-                .role("CUSTOMER")
+                .role("ROLE_CUSTOMER")
                 .build();
 
         String randomCode = RandomString.make(128);
@@ -72,7 +72,7 @@ public class UserServiceImpl implements IUserService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         String time = LocalDateTime.now().format(formatter);
         content = content.replace("[[time]]", time);
-        String verifyURL = siteURL + "/bookstore/verify?code=" + user.getVerificationCode();
+        String verifyURL = siteURL + "/verify?code=" + user.getVerificationCode();
         content = content.replace("[[URL]]", verifyURL);
         helper.setText(content, true);
         mailSender.send(message);

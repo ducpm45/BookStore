@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index::header">
+
+</head>
+<body>
+<div class="container-fluid mb-5">
+  <div class="row justify-content-md-center">
+    <div class="col-12 col-md-6 mt-5">
+      <div class="text-center mb-3">
+        <h1>Book Store</h1>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Xác minh thành công</h3>
+          <h4 class="alert alert-success" role="alert">
+              Xin chúc mừng, tài khoản của bạn đã được xác minh thành công !
+          </h4>
+          <h5>
+            <a th:href="@{/login}">Bấm vào đây để đăng nhập !</a>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<a th:replace="index::back-to-top"></a>
+<th:block th:replace="index::script"></th:block>
+</body>
+</html>

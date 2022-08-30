@@ -10,5 +10,6 @@ public interface IBookService {
     Book getBookById(Long bookId);
     Page<Book> getBooksByCategoryId(Long categoryId, int pageNum);
     void addNewBook(UploadBookDTO uploadBookDTO, MultipartFile file);
+    boolean editBook(UploadBookDTO editBookDTO, Long bookId);
     Page<Book> searchAllBooksByName(int pageNum, String name);
 }
