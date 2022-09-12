@@ -30,48 +30,48 @@
           <table>
             <tr>
               <td>Tên sách:</td>
-              <td><input th:field="*{name}" type="text" id="name" th:placeholder="${bookDTO.name}"/></td>
+              <td><input th:field="*{name}" type="text" id="name"/></td>
             </tr>
             <tr>
               <td>Ngôn ngữ:</td>
-              <td><input th:field="*{language}" type="text" id="language" th:placeholder="${bookDTO.language}"></td>
+              <td><input th:field="*{language}" type="text" id="language"></td>
             </tr>
             <tr>
               <td>Thể loại: </td>
               <td><select th:field="*{category}" name="" id="category">
-                <option th:each="cate : ${categoryList}" th:value="${cate.categoryName}" th:text="${cate.categoryName}"></option>
+                <option th:each="cate : ${categoryList}" th:value="${cate.categoryName}"></option>
               </select></td>
             </tr>
             <tr>
               <td>Tác giả: </td>
-              <td><input th:field="*{author}" type="text" id="author" th:placeholder="${bookDTO.author}"></td>
+              <td><input th:field="*{author}" type="text" id="author"></td>
             </tr>
             <tr>
               <td>Nhà xuất bản: </td>
-              <td><input th:field="*{publisher}" type="text" id="publisher" th:placeholder="${bookDTO.publisher}"></td>
+              <td><input th:field="*{publisher}" type="text" id="publisher"></td>
             </tr>
             <tr>
               <td>Ngày xuất bản: </td>
-              <td><input th:field="*{publishDate}" type="date" id="publishDate" th:placeholder="${bookDTO.publishDate}"></td>
+              <td><input th:field="*{publishDate}" type="date" id="publishDate"></td>
             </tr>
             <tr>
               <td>Số lượng: </td>
-              <td><input th:field="*{quantity}" type="text" id="quantity" th:placeholder="${bookDTO.quantity}"></td>
+              <td><input th:field="*{quantity}" type="text" id="quantity"></td>
             </tr>
             <tr>
               <td>Giá: </td>
-              <td><input th:field="*{price}" type="text" id="price" th:placeholder="${bookDTO.price}"></td>
+              <td><input th:field="*{price}" type="text" id="price"></td>
             </tr>
             <tr>
               <td>Giảm giá: </td>
-              <td><input th:field="*{discount}" type="text" id="discount" th:placeholder="${bookDTO.discount * 100}"> %</td>
+              <td><input th:field="*{discount}" type="text" id="discount"> %</td>
             </tr>
           </table>
         </div>
         <div class="col-lg-7 pl-0">
           <div>
             <label for="about">Giới thiệu: </label><br>
-            <textarea th:field="*{about}" id="about" rows="12" cols="75" th:text="${bookDTO.about}"></textarea>
+            <textarea th:field="*{about}" id="about" rows="12" cols="75"></textarea>
           </div>
         </div>
         <div class="pt-2 justify-content-center">

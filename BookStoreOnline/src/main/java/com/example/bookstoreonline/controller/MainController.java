@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 @Controller
@@ -44,7 +43,9 @@ public class MainController {
         if(null == userInput) {
             Page<Book> page = bookService.getAllBooks(pageNum);
             List<BookDTO> bookDTOList = new ArrayList<>();
+            page.getContent().forEach(bookDTO -> log.info(String.valueOf(bookDTO)));
             page.getContent().forEach(book -> bookDTOList.add(BookDTO.Mapper.mapFromBookEntity(book)));
+
             model.addAttribute("currentPage", pageNum);
             model.addAttribute("totalPages", page.getTotalPages());
             model.addAttribute("bookDTOList", bookDTOList);

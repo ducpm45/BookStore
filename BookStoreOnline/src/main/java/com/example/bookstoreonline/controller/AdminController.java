@@ -3,7 +3,6 @@ package com.example.bookstoreonline.controller;
 import com.example.bookstoreonline.dto.BookDTO;
 import com.example.bookstoreonline.dto.UploadBookDTO;
 import com.example.bookstoreonline.model.Book;
-import com.example.bookstoreonline.model.Category;
 import com.example.bookstoreonline.repository.CategoryRepository;
 import com.example.bookstoreonline.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 

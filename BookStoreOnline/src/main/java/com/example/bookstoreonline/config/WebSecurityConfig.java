@@ -44,6 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/book-detail*", "/category*").permitAll()
                 .antMatchers("/admin*").hasAuthority("ROLE_ADMIN")
                 .antMatchers("/user*").hasAnyAuthority("ROLE_ADMIN", "ROLE_CUSTOMER")
+                .antMatchers("/cart*").hasAnyAuthority("ROLE_ADMIN", "ROLE_CUSTOMER")
                 .and().exceptionHandling().accessDeniedPage("/403")
                 .and()
                 .formLogin()

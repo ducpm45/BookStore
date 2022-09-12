@@ -98,7 +98,7 @@ public class BookServiceImpl implements IBookService {
     @Override
     public boolean editBook(UploadBookDTO editBookDTO, Long bookId) {
         Category category = categoryRepository.getCategoryByCategoryName(editBookDTO.getCategory());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         Book editBook = Book.builder()
                 .id(bookId)
                 .name(editBookDTO.getName())
@@ -106,7 +106,7 @@ public class BookServiceImpl implements IBookService {
                 .category(category)
                 .author(editBookDTO.getAuthor())
                 .publisher(editBookDTO.getPublisher())
-                .publishDate(LocalDate.parse(editBookDTO.getPublishDate(), formatter))
+//                .publishDate(LocalDate.parse(editBookDTO.getPublishDate(), formatter))
                 .quantity(editBookDTO.getQuantity())
                 .price(editBookDTO.getPrice())
                 .discount(editBookDTO.getDiscount() / 100)
