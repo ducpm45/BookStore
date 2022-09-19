@@ -5,6 +5,7 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_users")
@@ -35,6 +36,13 @@ public class User {
     private String address;
     @Column(name = "user_phone")
     private String phone;
+
+    @OneToOne
+    @JoinColumn(name = "shopping_cart_id")
+    private ShoppingCart shoppingCart;
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orderList;
 
     @Override
     public boolean equals(Object o) {

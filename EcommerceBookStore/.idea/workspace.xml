@@ -5,142 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05c78982-3c77-41c5-84b5-3ae97e09dd8d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/OrderItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/main/java/com/ecommerce/library/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/constant/ExceptionCode.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/controller/ApplicationExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/controller/OrderController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/dto/BookDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/dto/BookDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/dto/NewUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/dto/NewUserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/exception/EmailIsExistedException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/exception/ResourceNotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/model/CustomUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/model/CustomUserDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/model/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/model/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/model/OrderItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/IOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/IUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/repository/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/repository/BookRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/IBookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/IBookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/IOrderItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/IOrderItemService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/impl/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/impl/BookServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/js/quantity_control.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_alert.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_badge.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_breadcrumb.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_button-group.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_buttons.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_card.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_carousel.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_close.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_code.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_custom-forms.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_dropdown.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_forms.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_functions.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_grid.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_images.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_input-group.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_jumbotron.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_list-group.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_media.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_mixins.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_modal.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_nav.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_navbar.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_pagination.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_popover.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_print.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_progress.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_reboot.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_root.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_spinners.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_tables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_toasts.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_tooltip.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_transitions.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_type.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_utilities.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/_variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/bootstrap-grid.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/bootstrap-reboot.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/bootstrap.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_alert.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_background-variant.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_badge.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_border-radius.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_box-shadow.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_breakpoints.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_buttons.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_caret.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_clearfix.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_deprecate.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_float.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_forms.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_gradients.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_grid-framework.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_grid.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_hover.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_image.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_list-group.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_lists.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_nav-divider.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_pagination.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_reset-text.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_resize.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_screen-reader.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_size.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_table-row.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_text-emphasis.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_text-hide.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_text-truncate.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_transition.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/mixins/_visibility.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_align.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_background.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_borders.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_clearfix.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_display.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_embed.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_flex.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_float.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_interactions.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_overflow.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_position.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_screenreaders.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_shadows.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_sizing.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_spacing.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_stretched-link.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_text.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/utilities/_visibility.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/bootstrap/scss/vendor/_rfs.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/scss/style.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/sql/data-init.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/sql/script.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/templates/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/templates/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/templates/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/templates/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/impl/OrderItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/java/com/example/bookstoreonline/service/impl/OrderItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/sql/data-init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/static/sql/data-init.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/templates/admin/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/templates/admin/admin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/templates/admin/book-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/templates/admin/book-manage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/templates/admin/edit-book.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/templates/admin/edit-book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BookStoreOnline/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,12 +67,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "jdk.selected.JAVA_MODULE": "11",
-    "last_opened_file_path": "D:/My_JAVA/BookStore/EcommerceBookStore/Library/src/main/java/com/ecommerce/library/model",
+    "last_opened_file_path": "D:/My_JAVA/BookStore/EcommerceBookStore",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_interpreter_path": "node",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
-    "show.run.dashboard.notification": "false"
+    "show.run.dashboard.notification": "false",
+    "spring.configuration.checksum": "7fa7fa2d6a6ca486808595e80e1178be"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -237,6 +114,7 @@
       <option name="presentableId" value="Default" />
       <updated>1661506711312</updated>
       <workItem from="1661506712558" duration="1625000" />
+      <workItem from="1663497137853" duration="24000" />
     </task>
     <servers />
   </component>

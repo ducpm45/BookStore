@@ -26,6 +26,9 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private Set<OrderItem> orderItem;
     @Column(name = "order_date")
     private LocalDateTime orderDate;
     @Column(name = "order_total_amount")

@@ -18,12 +18,6 @@
       <div class="text-center mb-4">
         <h2 class="section-title px-5"><span class="px-2">Sửa thông tin sách</span></h2>
       </div>
-      <div th:if="${editSuccess}">
-        <h6 class="alert alert-success" th:text="${editSuccess}"></h6>
-      </div>
-      <div th:if="${editFailed}">
-        <h6 class="alert alert-danger" th:text="${editFailed}"></h6>
-      </div>
       <form class="row" th:action="@{'/admin/edit/' + ${bookId}}" th:object="${editBookDTO}" method="post"
             enctype="multipart/form-data">
         <div class="col-lg-5 pr-0">
@@ -88,6 +82,6 @@
 <div th:replace="index::footer"></div>
 <!-- Footer end -->
 <th:block th:replace="index::script"></th:block>
-<th:block th:replace="admin/admin::nice-edit"></th:block>
+<!--<th:block th:replace="admin/admin::nice-edit"></th:block>-->
 </body>
 </html>

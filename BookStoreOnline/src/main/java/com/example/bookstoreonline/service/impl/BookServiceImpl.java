@@ -24,6 +24,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -96,23 +97,41 @@ public class BookServiceImpl implements IBookService {
     }
 
     @Override
-    public boolean editBook(UploadBookDTO editBookDTO, Long bookId) {
+    public void editBook(UploadBookDTO editBookDTO, Long bookId) {
         Category category = categoryRepository.getCategoryByCategoryName(editBookDTO.getCategory());
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        Book editBook = Book.builder()
-                .id(bookId)
-                .name(editBookDTO.getName())
-                .language(editBookDTO.getLanguage())
-                .category(category)
-                .author(editBookDTO.getAuthor())
-                .publisher(editBookDTO.getPublisher())
-//                .publishDate(LocalDate.parse(editBookDTO.getPublishDate(), formatter))
-                .quantity(editBookDTO.getQuantity())
-                .price(editBookDTO.getPrice())
-                .discount(editBookDTO.getDiscount() / 100)
-                .build();
-        Book editedBook = bookRepository.save(editBook);
-        return editedBook.equals(editBook);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        Book savedBook = bookRepository.getById(bookId);
+        if(editBookDTO.getName() != null && !editBookDTO.getName().equals("")) {
+            savedBook.setName(editBookDTO.getName());
+        }
+        if(editBookDTO.getLanguage() != null && !editBookDTO.getLanguage().equals("")) {
+            savedBook.setLanguage(editBookDTO.getLanguage());
+        }
+        if(category != null) {
+            savedBook.setCategory(category);
+        }
+        if(editBookDTO.getAuthor() != null && !editBookDTO.getAuthor().equals("")) {
+            savedBook.setAuthor(editBookDTO.getAuthor());
+        }
+        if(editBookDTO.getPublisher() != null && !editBookDTO.getPublisher().equals("")) {
+            savedBook.setPublisher(editBookDTO.getPublisher());
+        }
+        if(editBookDTO.getPublishDate() != null && !editBookDTO.getPublishDate().equals("")) {
+            savedBook.setPublishDate(LocalDate.parse(editBookDTO.getPublishDate(), formatter));
+        }
+        if(editBookDTO.getQuantity() != null && editBookDTO.getQuantity() >= 0) {
+            savedBook.setQuantity(editBookDTO.getQuantity());
+        }
+        if(editBookDTO.getPrice() != null && editBookDTO.getPrice() >= 0) {
+            savedBook.setPrice(editBookDTO.getPrice());
+        }
+        if(editBookDTO.getDiscount() != null && editBookDTO.getDiscount() >= 0) {
+            savedBook.setDiscount(editBookDTO.getDiscount());
+        }
+        if(editBookDTO.getAbout() != null && !editBookDTO.getAbout().equals("<br>")) {
+            savedBook.setAbout(editBookDTO.getAbout());
+        }
+        bookRepository.save(savedBook);
     }
 
     @Override
@@ -123,6 +142,19 @@ public class BookServiceImpl implements IBookService {
             return null;
         }
         return page;
+    }
+
+    @Override
+    public void deleteBookById(Long bookId) {
+        Book book = bookRepository.getById(bookId);
+        book.setCategory(null);
+        bookRepository.save(book);
+        bookRepository.delete(book);
+    }
+
+    @Override
+    public void deleteManyBook(Long[] bookIdArr) {
+        bookRepository.deleteManyBook(List.of(bookIdArr));
     }
 
 

@@ -16,50 +16,5 @@ import java.time.LocalDateTime;
 
 @Service
 public class OrderItemServiceImpl implements IOrderItemService {
-    @Autowired
-    private OrderItemRepository orderItemRepository;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private OrderRepository orderRepository;
-    @Autowired
-    private BookRepository bookRepository;
-    @Override
-    public OrderItem addOrderItemFirstTime(Long bookId, String userEmail, Integer quantity) {
-        User user = userRepository.getUserByEmail(userEmail);
-        Order order = Order.builder()
-                .orderDate(LocalDateTime.now())
-                .user(user)
-                .build();
-        Order newOrder = orderRepository.save(order);
-        Book book = bookRepository.getById(bookId);
-        OrderItem orderItem = OrderItem.builder()
-                .book(book)
-                .quantity(1)
-                .order(newOrder)
-                .build();
-        return orderItemRepository.save(orderItem);
-    }
-
-    @Override
-    public void addOrderItemToExistingOrder(Long productId, String sessionToken, Integer quantity) {
-
-    }
-
-    @Override
-    public void updateOrderItem(Long itemId, Integer quantity) {
-
-    }
-
-    @Override
-    public void removeOrderItem(Long itemId, String sessionToken) {
-
-    }
-//    @Override
-//    public void addNewOrderItem(Long bookId, Long orderItemId, Integer quantity) {
-//        OrderItem newOrderItem = OrderItem.builder()
-//
-//                .build();
-//    }
 
 }

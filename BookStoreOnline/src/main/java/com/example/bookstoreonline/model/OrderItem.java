@@ -27,7 +27,7 @@ public class OrderItem {
     private Book book;
     @Column(name = "item_quantity")
     private Integer quantity;
-
+    private Double totalPrice;
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

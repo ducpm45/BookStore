@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <title th:text="${title}"></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- Favicon -->
     <link th:href="@{/img/favicon.ico}" rel="icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
@@ -78,7 +79,6 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
                         <a th:href="@{/}" class="nav-item nav-link active">Trang chủ</a>
-                        <a href="contact.html" class="nav-item nav-link">Liên hệ</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
                         <div class="d-flex" sec:authorize="${!isAuthenticated()}">
@@ -167,50 +167,59 @@
     <div class="row px-xl-5 pb-3" th:if="${bookDTOListSearchResult}">
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1" th:each="book : ${bookDTOListSearchResult}">
             <div class="card product-item border-0 mb-4">
-                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                    <img class="img-fluid w-100" th:src="${book.image}" alt="" src="">
-                </div>
-                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                    <h5 class="text-truncate mb-3" th:text="${book.name}"></h5>
-                    <div class="d-flex justify-content-center">
-                        <h6 class="text-muted ml-2">
-                            <del th:if="${book.discount} > 0"><span th:text="${book.price} + ' VND'"></span></del>
-                        </h6>
-                        <h5 style="color: red" th:text="${book.newPrice} + ' VND'"></h5>
+                <form th:action="@{/add-to-cart}" method="post">
+                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                        <img class="img-fluid w-100" th:src="${book.image}" alt="" src="">
                     </div>
-                </div>
-                <div class="card-footer d-flex justify-content-between bg-light border">
-                    <a th:href="@{'/book-detail/' + ${book.id}}" class="btn btn-sm text-dark p-0"><i
-                            class="fas fa-eye text-primary mr-1"></i>Xem chi tiết</a>
-                    <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm
-                        vào giỏ hàng</a>
+                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                        <h5 class="text-truncate mb-3" th:text="${book.name}"></h5>
+                        <div class="d-flex justify-content-center">
+                            <h6 class="text-muted ml-2">
+                                <del th:if="${book.discount} > 0"><span th:text="${book.price} + ' VND'"></span></del>
+                            </h6>
+                            <h5 style="color: red" th:text="${book.newPrice} + ' VND'"></h5>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between bg-light border">
+                        <a th:href="@{'/book-detail/' + ${book.id}}" class="btn btn-sm text-dark p-0"><i
+                                class="fas fa-eye text-primary mr-1"></i>Xem chi tiết</a>
+                        <input type="hidden" th:value="${book.id}" name="bookId">
+                        <a href="" class="btn btn-sm text-dark p-0"><i
+                                class="fas fa-shopping-cart text-primary mr-1">
+                            <input type="submit" value="Thêm vào giỏ hàng" style="border: none; background-color: white">
+                        </i></a>
+                    </div>
+                </form>
 
-                </div>
             </div>
         </div>
     </div>
     <div class="row px-xl-5 pb-3" th:unless="${bookDTOListSearchResult}">
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1" th:each="book : ${bookDTOList}">
             <div class="card product-item border-0 mb-4">
-                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                    <img class="img-fluid w-100" th:src="${book.image}" alt="" src="">
-                </div>
-                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                    <h5 class="text-truncate mb-3" th:text="${book.name}"></h5>
-                    <div class="d-flex justify-content-center">
-                        <h6 class="text-muted ml-2">
-                            <del th:if="${book.discount} > 0"><span th:text="${book.price} + ' VND'"></span></del>
-                        </h6>
-                        <h5 style="color: red" th:text="${book.newPrice} + ' VND'"></h5>
+                <form th:action="@{/add-to-cart}" method="post">
+                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                        <img class="img-fluid w-100" th:src="${book.image}" alt="" src="">
                     </div>
-                </div>
-                <div class="card-footer d-flex justify-content-between bg-light border">
-                    <a th:href="@{'/book-detail/' + ${book.id}}" class="btn btn-sm text-dark p-0"><i
-                            class="fas fa-eye text-primary mr-1"></i>Xem chi tiết</a>
-                    <a th:href="@{'/add-to-cart/' + ${book.id}}" class="btn btn-sm text-dark p-0"><i
-                            class="fas fa-shopping-cart text-primary mr-1"></i>Thêm
-                        vào giỏ hàng</a>
-                </div>
+                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                        <h5 class="text-truncate mb-3" th:text="${book.name}"></h5>
+                        <div class="d-flex justify-content-center">
+                            <h6 class="text-muted ml-2">
+                                <del th:if="${book.discount} > 0"><span th:text="${book.price} + ' VND'"></span></del>
+                            </h6>
+                            <h5 style="color: red" th:text="${book.newPrice} + ' VND'"></h5>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between bg-light border">
+                        <a th:href="@{'/book-detail/' + ${book.id}}" class="btn btn-sm text-dark p-0"><i
+                                class="fas fa-eye text-primary mr-1"></i>Xem chi tiết</a>
+                        <input type="hidden" th:value="${book.id}" name="bookId">
+                        <a href="" class="btn btn-sm text-dark p-0"><i
+                                class="fas fa-shopping-cart text-primary mr-1">
+                            <input type="submit" value="Thêm vào giỏ hàng" style="border: none; background-color: white">
+                        </i></a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -281,7 +290,6 @@
                             ngay</a>
                         <a class="text-dark mb-2" th:href="@{/login}"><i class="fa fa-angle-right mr-2"></i>Đăng
                             nhập</a>
-                        <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Quên mật khẩu</a>
                         <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Hướng dẫn</a>
                     </div>
                 </div>

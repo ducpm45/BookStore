@@ -17,13 +17,24 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
+import java.security.Principal;
 
 @Controller
 @Slf4j
 public class UserController {
     @Autowired
     private IUserService userService;
-
+    @GetMapping("/user")
+    public String showUserPage(Model model, Principal principal) {
+        if(principal == null) {
+            return "redirect:/login";
+        }
+        model.addAttribute("title", "Trang cá nhân");
+        String userEmail = principal.getName();
+        User user = userService.getUserByEmail(userEmail);
+        model.addAttribute("userFullName", user.getFullName());
+        return "/user/user";
+    }
     @GetMapping("/login")
     public String showLoginPage(Model model) {
         model.addAttribute("title", "Đăng nhập");

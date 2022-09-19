@@ -27,9 +27,11 @@
           </form>
         </div>
       </div>
+
       <div class="row pt-5">
-        <table border="1" cellpadding="10">
-          <thead>
+        <form th:action="@{/admin/delete-books-checked}" >
+          <table border="1" cellpadding="10">
+            <thead>
             <tr>
               <th>Đánh dấu</th>
               <th>ID Sách</th>
@@ -41,11 +43,11 @@
               <th>Giảm giá</th>
               <th>Actions</th>
             </tr>
-          </thead>
-          <tbody th:each="book : ${bookDTOList}">
+            </thead>
+            <tbody th:each="book : ${bookDTOList}">
             <tr>
               <td>
-                <input type="checkbox"/>
+                <input type="checkbox" name="bookId" th:value="${book.id}"/>
               </td>
               <td th:text="${book.id}"></td>
               <td th:text="${book.name}"></td>
@@ -56,11 +58,14 @@
               <td th:text="${book.discount}"></td>
               <td>
                 <a th:href="@{'/admin/edit/' + ${book.id}}">Sửa</a>
-                <a th:href="@{'admin/delete/' + ${book.id}}">Xóa</a>
+                <a th:href="@{'/admin/delete/' + ${book.id}}">Xóa</a>
               </td>
             </tr>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+          <input type="submit" value="Xóa tất cả sách đã chọn" />
+        </form>
+
       </div>
       <div class="row justify-content-center mb-5 pt-5">
         <div th:if="${totalPages > 1}">
@@ -100,6 +105,6 @@
 <div th:replace="index::footer"></div>
 <!-- Footer end -->
 <th:block th:replace="index::script"></th:block>
-<th:block th:replace="admin/admin::nice-edit"></th:block>
+<!--<th:block th:replace="admin/admin::nice-edit"></th:block>-->
 </body>
 </html>

@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -38,11 +39,12 @@ public class AdminController {
                            @PathVariable(name = "pageNum") int pageNum) {
             Page<Book> page = bookService.getAllBooks(pageNum);
             List<BookDTO> bookDTOList = new ArrayList<>();
+//            List<Long> deleteBookIdList = new ArrayList<>();
             page.getContent().forEach(book -> bookDTOList.add(BookDTO.Mapper.mapFromBookEntity(book)));
             model.addAttribute("currentPage", pageNum);
             model.addAttribute("totalPages", page.getTotalPages());
             model.addAttribute("bookDTOList", bookDTOList);
-
+//            model.addAttribute("deleteBookIdList", deleteBookIdList);
         return "/admin/book-manage";
     }
     @GetMapping("/admin/edit/{bookId}")
@@ -55,16 +57,32 @@ public class AdminController {
     }
 
     @PostMapping("/admin/edit/{bookId}")
-    public String editBook(Model model,
-                           @PathVariable(name = "bookId") Long bookId,
+    public String editBook(@PathVariable(name = "bookId") Long bookId,
                            @ModelAttribute("editBookDTO") UploadBookDTO editBookDTO) {
-        if(bookService.editBook(editBookDTO, bookId)) {
-            model.addAttribute("editSuccess", "Cập nhật thông tin sách thành công");
-        } else {
-            model.addAttribute("editFailed", "Cập nhật thông tin sách thất bại");
-        }
-
+       bookService.editBook(editBookDTO, bookId);
         return "/admin/edit-book";
+    }
+    @GetMapping("/admin/delete/{bookId}")
+    public String deleteOneBook(Model model, @PathVariable(name = "bookId") Long bookId) {
+        bookService.deleteBookById(bookId);
+        if(bookService.getBookById(bookId) == null) {
+            model.addAttribute("deleteSuccess", "Xóa sách thành công");
+        } else {
+            model.addAttribute("deleteFailed", "Xóa sách thất bại");
+        }
+        return "/admin/admin";
+    }
+
+    @GetMapping("/admin/delete-books-checked")
+    public String deleteManyBook(Model model, @RequestParam(name = "bookId") Long[] bookIdArr) {
+        bookService.deleteManyBook(bookIdArr);
+        for (Long bookId : bookIdArr) {
+            if (bookService.getBookById(bookId) != null) {
+                model.addAttribute("deleteManyBookFailed", "Xóa thất bại");
+            }
+        }
+        model.addAttribute("deleteManyBookSuccess", "Xóa thành công");
+        return "/admin/admin";
     }
 
     @GetMapping("/admin/add-new-book")

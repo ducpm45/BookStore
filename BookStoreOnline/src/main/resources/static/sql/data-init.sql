@@ -240,3 +240,21 @@ Với vô số những thông tin thú vị và hình ảnh tuyệt đẹp, bác
    Online flashcard hỗ trợ học sinh ghi nhớ từ một cách dễ dàng và có hệ thống.
      </span></p>', 'Vicky Liu', 0, '/img/ielts-trung-hoc-pre-intermediate-book-2.jpg', 'Tiếng Việt', 'IELTS Trung Học - Pre-intermediate - Book 2', 268000, '2022-08-12', 'NXB Tổng Hợp TP. HCM', 100, 10 )
 ;
+
+insert into tbl_categories (category_id, category_name)
+values (1, 'Văn học'),(2, 'Kinh tế'),(3, 'Khoa học - Công nghệ'),(4, 'Kỹ năng sống'),(5, 'Y học - Sức khỏe'),
+       (6, 'Danh nhân - Văn hóa'),(7, 'Lịch sử - Quân sự'),(8, 'Chính trị - Triết học'),(9, 'Phong thủy'),(10, 'Ngoại ngữ');
+
+insert into tbl_users (user_address, user_email, user_enable, user_full_name, user_password, user_phone,
+                       user_role, user_verification_code)
+values
+    ('BookStore', 'admin@gmail.com', true, 'admin', '$2a$10$do/VXXpUorJtVn3Onhb8TuoPRiIgxEIl8/VXwgQ6iyfLbY7Rg07r6', '0708126730', 'ADMIN', null),
+    ('Hà Nội', 'guest1@gmail.com', true, 'Phạm Minh Đức', '$2a$10$do/VXXpUorJtVn3Onhb8TuoPRiIgxEIl8/VXwgQ6iyfLbY7Rg07r6', '0708126000', 'CUSTOMER', null),
+    ('Thanh Hóa', 'guest2@gmail.com', true, 'Phạm Minh Nguyệt', '$2a$10$do/VXXpUorJtVn3Onhb8TuoPRiIgxEIl8/VXwgQ6iyfLbY7Rg07r6', '0708126001', 'CUSTOMER', null),
+    ('Bắc Giang', 'guest3@gmail.com', true, 'Nguyễn Thị Thủy', '$2a$10$do/VXXpUorJtVn3Onhb8TuoPRiIgxEIl8/VXwgQ6iyfLbY7Rg07r6', '0708126002', 'CUSTOMER', null),
+    ('Nghệ An', 'guest4@gmail.com', true, 'Nguyễn Văn Ngôn', '$2a$10$do/VXXpUorJtVn3Onhb8TuoPRiIgxEIl8/VXwgQ6iyfLbY7Rg07r6', '0708126003', 'CUSTOMER', null),
+    ('Vĩnh Phúc', 'guest5@gmail.com', true, 'Lê Thọ Dũng', '$2a$10$do/VXXpUorJtVn3Onhb8TuoPRiIgxEIl8/VXwgQ6iyfLbY7Rg07r6', '0708126004', 'CUSTOMER', null),
+    ('Ninh Bình', 'guest6@gmail.com', true, 'Bùi Văn Thanh', '$2a$10$do/VXXpUorJtVn3Onhb8TuoPRiIgxEIl8/VXwgQ6iyfLbY7Rg07r6', '0708126005', 'CUSTOMER', null),
+    ('Hải Phòng', 'guest7@gmail.com', true, 'Lê Thị Ngà', '$2a$10$do/VXXpUorJtVn3Onhb8TuoPRiIgxEIl8/VXwgQ6iyfLbY7Rg07r6', '0708126006', 'CUSTOMER', null),
+    ('Thái Bình', 'guest8@gmail.com', true, 'Trần Thị Thảo', '$2a$10$do/VXXpUorJtVn3Onhb8TuoPRiIgxEIl8/VXwgQ6iyfLbY7Rg07r6', '0708126007', 'CUSTOMER', null),
+    ('Nam Định', 'guest9@gmail.com', true, 'Trương Văn Hùng', '$2a$10$do/VXXpUorJtVn3Onhb8TuoPRiIgxEIl8/VXwgQ6iyfLbY7Rg07r6', '0708126008', 'CUSTOMER', null);

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index::header">
+</head>
+<body>
+<!--  Topbar start  -->
+<div th:replace="index::topbar"></div>
+<!--  Topbar end -->
+
+<!--  Navbar start  -->
+
+<div class="container-fluid mb-5">
+    <div class="row border-top px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">
+            <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
+               data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                <h6 class="m-0">Trang cá nhân</h6>
+                <i class="fa fa-angle-down text-dark"></i>
+            </a>
+            <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
+                 id="navbar-vertical">
+                <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+                    <a th:href="@{/user/user-info}" class="dropdown-item">Thông tin cá nhân</a>
+                    <a th:href="@{/user/order-history}" class="dropdown-item">Lịch sử đơn hàng</a>
+                </div>
+            </nav>
+        </div>
+        <div class="col-lg-9 mt-5 text-center">
+            <h2>Xin chào <span th:text="${userFullName}"></span>. Chúc bạn một ngày tốt lành!</h2>
+        </div>
+    </div>
+</div>
+<!--  Navbar end  -->
+<!--  Footer start  -->
+<div th:replace="index :: footer"></div>
+<!--  Footer end-->
+<a href="#" th:replace="index::back-to-top"></a>
+<th:block th:replace="index::script"></th:block>
+</body>
+</html>

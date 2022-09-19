@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index::header">
+</head>
+<body>
+<!--  Topbar start  -->
+<div th:replace="index::topbar"></div>
+<!--  Topbar end -->
+
+<!--  Navbar start  -->
+<div th:replace="index :: navbar"></div>
+<!--  Navbar end  -->
+
+<!--  Featured Start -->
+<div th:replace="index :: featured"></div>
+<!--  Featured End -->
+
+<div class="container-fluid mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div th:if="checkoutSuccess" th:unless="${checkoutFailed}">
+                <div class="alert alert-success text-center" >
+                    <p th:text="${checkoutSuccess}"></p>
+                </div>
+            </div>
+            <div th:if="checkoutFailed" th:unless="${checkoutSuccess}">
+                <div class="alert alert-danger text-center" >
+                    <p th:text="${checkoutFailed}"></p>
+                    <p>Tên, Địa chỉ, Số điện thoại của người nhận không được để trống</p>
+                </div>
+            </div>
+            <div th:if="${checkoutSuccess}">
+                <h3>Thông tin đơn hàng</h3>
+                <h4>Thời gian đặt hàng: <span th:text="${order.orderDate}"></span></h4>
+                <h4>Danh sách sản phẩm:</h4>
+                <ul th:each="item : ${order.orderItem}">
+                    <li>
+                        <h5>Tên sách: <span th:text="${item.book.name}"></span></h5>
+                    </li>
+                    <li>
+                        <h5>Giá: <span th:text="${item.totalPrice} + '  VND'"></span></h5>
+                    </li>
+                    <li>
+                        <h5>Số lượng: <span th:text="${item.quantity}"></span></h5>
+                    </li>
+                </ul>
+                <h4>Tên người nhận: <span th:text="${order.receiverName}"></span></h4>
+                <h4>Địa chỉ người nhận: <span th:text="${order.receiverAddress}"></span></h4>
+                <h4>Số điện thoại người nhận: <span th:text="${order.receiverPhone}"></span></h4>
+                <h4>Tổng giá trị đơn hàng: <span th:text="${order.totalAmount} + '  VND'"></span></h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  Footer start  -->
+<div th:replace="index :: footer"></div>
+<!--  Footer end-->
+<a href="#" th:replace="index::back-to-top"></a>
+<th:block th:replace="index::script"></th:block>
+</body>
+</html>

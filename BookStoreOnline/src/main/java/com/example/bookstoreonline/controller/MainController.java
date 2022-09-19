@@ -23,8 +23,6 @@ public class MainController {
     private IBookService bookService;
     @Autowired
     private ICategoryService categoryService;
-//    @Autowired
-//    private IUserService userService;
 
     @GetMapping("/")
     public String showHomePage(Model model, @RequestParam(value = "userInput", required = false) String userInput) {
@@ -38,12 +36,11 @@ public class MainController {
     public String showPage(Model model,
                                    @PathVariable(name = "pageNum") int pageNum,
                            String userInput) {
-        log.info("userInput: {}", userInput);
         model.addAttribute("title", "Trang chủ");
         if(null == userInput) {
             Page<Book> page = bookService.getAllBooks(pageNum);
             List<BookDTO> bookDTOList = new ArrayList<>();
-            page.getContent().forEach(bookDTO -> log.info(String.valueOf(bookDTO)));
+//            page.getContent().forEach(bookDTO -> log.info(String.valueOf(bookDTO)));
             page.getContent().forEach(book -> bookDTOList.add(BookDTO.Mapper.mapFromBookEntity(book)));
 
             model.addAttribute("currentPage", pageNum);
